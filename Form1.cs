@@ -128,6 +128,7 @@ namespace BaobabWildlifeSystem
                 txtAnimalID.Focus();
 
                 // Note: Call your grid refresh method here once Member 2 builds the view component
+                RefreshGrid();
             }
             catch (Exception ex)
             {
