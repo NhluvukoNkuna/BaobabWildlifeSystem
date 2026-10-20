@@ -322,6 +322,14 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnGenerateSummary;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Label lblAverageRecoveryScore;
+        private System.Windows.Forms.Label lblAverageAge;
+        private System.Windows.Forms.Label lblTotalAnimals;
+        private System.Windows.Forms.Label lblReleaseReadyCount;
+        private System.Windows.Forms.Label lblRecoveringCount;
+        private System.Windows.Forms.Label lblStableCount;
+        private System.Windows.Forms.Label lblSeriousCount;
+        private System.Windows.Forms.Label lblCriticalCount;
     }
 }
 
