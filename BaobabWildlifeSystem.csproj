@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalStorage.cs" />
+    <Compile Include="Form1.DeleteAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1Update.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
