@@ -137,6 +137,134 @@ namespace BaobabWildlifeSystem
             }
         }
 
-        
+        private void btnGenerateSummary_Click(object sender, EventArgs e)
+        {
+           List<Animal> animals;
+           int skippedCount;
+
+          //Load animals from file(ANIMAL.TXT)
+          try
+          {
+            animals = AnimalStorage.LoadAnimals(out skippedCount);
+
+          }
+          catch (UnauthorizedAccessException)
+          {
+             MessageBox.Show("You do not have permission to read this file.");
+             return;
+          }
+          catch(IOException )
+          {
+            MessageBox.Show("You cannot read the animal file. Please check the file and try again.");
+            return;
+          }
+
+          // Calculating the total number of animals
+            int totalAnimals = animals.Count;
+
+         // Calculating total average age and recovery score. We show not N/A when there are no animals
+            string averageAge = "N/A";
+            string averageRecoveryScore = "N/A";
+
+         if (totalAnimals > 0) 
+         { 
+             double ageTotal = 0;
+             double totalRecoveryScore = 0;
+
+            foreach (Animal animal in animals)
+            {
+              ageTotal += animal.Age;
+              totalRecoveryScore += animal.RecoveryScore;
+            }
+
+             averageAge = (ageTotal / totalAnimals).ToString("F2");
+             averageRecoveryScore = (totalRecoveryScore / totalAnimals).ToString("F2");
+
+          }
+
+         // Counting animals in each status
+         int criticalCount = 0;
+         int seriousCount = 0;
+         int stableCount = 0;
+         int recoveringCount = 0;
+         int releaseReadyCount = 0;
+
+        foreach (Animal animal in animals)
+        {
+           switch (animal.Status)
+           {
+             case "Critical":
+                criticalCount++;
+                break;
+             case "Serious":
+                seriousCount++;
+                break;
+             case "Stable":
+                stableCount++;
+                break;
+             case "Recovering":
+                recoveringCount++;
+                break;
+             case "Release-Ready":
+                releaseReadyCount++;
+                break;
+            }
+          }
+
+          // Displaying the summary in a message box
+          lblTotalAnimals.Text = totalAnimals.ToString();
+          lblAverageAge.Text = averageAge;
+          lblAverageRecoveryScore.Text = averageRecoveryScore;
+          lblCriticalCount.Text = criticalCount.ToString();
+          lblSeriousCount.Text = seriousCount.ToString();
+          lblStableCount.Text = stableCount.ToString();
+          lblRecoveringCount.Text = recoveringCount.ToString();
+          lblReleaseReadyCount.Text = releaseReadyCount.ToString();
+
+          //Creating Summary report 
+          string summaryReport =
+          "BOABAB WILDLIFE REHABILITATION CENTRE\n" +
+          "ANIMAL SUMMARY REPORT\n" +
+          "Generated on: " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") + "\n" +
+          "-----------------------------------------\n" +
+          "Total Animals: " + totalAnimals + "\n" +
+          "Average Age: " + averageAge + "\n" +
+          "------------------------------------------\n" +
+          "Average Recovery Score: " + averageRecoveryScore + "\n" +
+          "Critical: " + criticalCount + "\n" +
+          "Serious: " + seriousCount + "\n" +
+          "Stable: " + stableCount + "\n" +
+          "Recovering: " + recoveringCount + "\n" +
+          "Release-Ready: " + releaseReadyCount + "\n";
+
+          string summaryFilePath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "summary.txt");
+
+          try
+          {
+             System.IO.File.WriteAllText(summaryFilePath, summaryReport, System.Text.Encoding.UTF8);
+
+             MessageBox.Show("Summary report generated successfully at: " + summaryFilePath);
+
+          }
+          catch (FileNotFoundException)
+          {
+             MessageBox.Show("The animal file could not be found. Please check if animals.txt exists in the bin/");
+
+          }
+          catch (UnauthorizedAccessException)
+          {
+             MessageBox.Show("The summary could not be saved because you do not have permission.");
+          }
+          catch (IOException )
+          {
+            MessageBox.Show("The summary file could not be saved due to an I/O error.");
+          }
+    
+       }
+
     }
 }
+
+        
+    
+
