@@ -48,7 +48,7 @@
   <ItemGroup>
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalStorage.cs" />
-    <Compile Include="Class1.cs">
+    <Compile Include="Form1Delete.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1Update.cs">
