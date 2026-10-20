@@ -16,6 +16,9 @@ namespace BaobabWildlifeSystem
         public Form1()
         {
             InitializeComponent();
+            dgvAnimals.CellClick += dgvAnimals_CellClick;
+            btnGenerateSummary.Click += btnGenerateSummary_Click;
+            CreateSummaryLabels();
         }
 
         // Helper method to check if ID already exists in animals.txt
@@ -261,6 +264,29 @@ namespace BaobabWildlifeSystem
           }
     
        }
+
+        private void CreateSummaryLabels()
+        {
+            Label[] labels = { lblTotalAnimals = new Label(), lblAverageAge = new Label(),
+        lblAverageRecoveryScore = new Label(), lblCriticalCount = new Label(),
+        lblSeriousCount = new Label(), lblStableCount = new Label(),
+        lblRecoveringCount = new Label(), lblReleaseReadyCount = new Label() };
+            string[] captions = { "Total animals:", "Average age:", "Average recovery score:",
+        "Critical:", "Serious:", "Stable:", "Recovering:", "Release-Ready:" };
+            for (int i = 0; i < labels.Length; i++)
+            {
+                Label caption = new Label
+                {
+                    Text = captions[i],
+                    AutoSize = true,
+                    Location = new Point(30 + (i / 4) * 450, 40 + (i % 4) * 30)
+                };
+                labels[i].AutoSize = true;
+                labels[i].Location = new Point(230 + (i / 4) * 450, 40 + (i % 4) * 30);
+                groupBox3.Controls.Add(caption);
+                groupBox3.Controls.Add(labels[i]);
+            }
+        }
 
     }
 }

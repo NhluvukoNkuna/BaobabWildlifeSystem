@@ -1,0 +1,10 @@
+WR-0001|Thabo|African Penguin|4|85|Release-Ready|Pre-Release Camp
+WR-0002|Naledi|Serval|3|62|Recovering|Outdoor Enclosure
+WR-0003|Sipho|Honey Badger|6|45|Stable|Recovery Ward
+WR-0004|Zola|Cape Vulture|12|19|Critical|Intensive Care Unit
+WR-0005|Lerato|Caracal|5|33|Serious|High-Dependency Ward
+WR-0006|Themba|Meerkat|2|78|Recovering|Outdoor Enclosure
+WR-0007|Amahle|Blue Crane|9|55|Stable|Recovery Ward
+WR-0008|Kagiso|Aardvark|7|8|Critical|Intensive Care Unit
+WR-0009|Nandi|Oribi|4|91|Release-Ready|Pre-Release Camp
+WR-0010|Pieter|Bat-eared Fox|3|27|Serious|High-Dependency Ward
